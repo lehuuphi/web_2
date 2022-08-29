@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .text-bold{
+            font-weight: bold;
+        }
+    </style>
+    <h1 id="heading">Bài tập thực hành DOM</h1>
+<p class="para para-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+<p class="para para-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+<p class="para para-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+<div class="content">
+    <h2 id="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptatibus sint molestias sit odit quia labore alias! Accusamus magnam aperiam officiis? Laboriosam numquam at eum dicta quos temporibus in aliquid?</p>
+
+    <script>
+        //truy cập vào thẻ h1 có id=“heading” thay đổi màu chữ thành ‘red’, và in hoa nội dung của thẻ đó
+         let heading = document.querySelector('#heading')
+         heading.style.color = "red";
+         heading.style.textTransform  = 'uppercase';
+         //Thay đổi màu chữ của tất cả thẻ có class “para” thành màu “blue” và có font-size = “20px”
+          let paracolor = document.querySelectorAll('.para')
+          Array.from(paracolor).map(ele => ele.style.color = "blue" ); 
+          Array.from(paracolor).map(ele => ele.style.fontSize = "20px" ); 
+          //Thêm thẻ a link đến trang ‘facebook’ ở đằng sau thẻ có class “para-3”
+           let alink =  document.querySelector('.para-3')
+           alink.insertAdjacentHTML("afterend" , '<a href="facebook.com">facebook.com </a>');
+          //Thay đổi nội dung của thẻ có id=“title” thành “Đây là thẻ tiêu đề”
+           document.title = "Đây là thẻ tiêu đề";
+          //thêm class “text-bold” vào thẻ có class=“description” (định nghĩa class “text-bold” có tác dụng in đậm chữ) (Không bắt buộc, nếu làm được thì làm)
+           document.querySelector(".description").classList.add("text-bold")
+          //Thay thế thẻ có class=“para-3” thành thẻ button có nội dung là “Click me”
+            let para_3 = document.querySelector(".para-3")
+            let newElement = document.createElement('button');
+              newElement.innerText = "Click me";
+              para_3.parentNode.replaceChild(newElement,para_3) 
+          //Copy thẻ có class=“para-2” và hiển thị ngay đằng sau thẻ đó
+            let para_2 = document.querySelector(".para-2")
+            const para_2Copy = para_2.cloneNode(true);
+            para_2.insertAdjacentElement("afterbegin", para_2Copy)
+          //Xóa thẻ có class=“para-1”
+            let removepara = document.querySelector(".para").classList.remove("para-1");
+    </script>
+</div>
+</body>
+</html>
